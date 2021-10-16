@@ -1,0 +1,17 @@
+.channel{
+    display: flex ;
+    color:gray;
+    cursor: pointer;
+    align-items: center;
+    padding-left: 40px;
+}
+
+.icon {
+    padding-right: 5px;
+}
+
+.channel:hover {
+    color:white;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, .1);
+}
