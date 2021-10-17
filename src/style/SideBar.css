@@ -7,10 +7,27 @@
 
    background-color: #2f3135; 
 }
-.sidebar_top {
+
+.profile {
+    border-bottom: 4px solid rgba(0,0,0, 0.4);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* padding: 10px; */
+    /* height: 100px; */
+    padding-bottom: 0;
+    padding-top: 0;
+    color: gray;
+}
+
+.sidebar_bottom {
     /* display: inli; */
-    /* justify-content: ; */
-    /* align-content: flex-end; */
+    flex-direction: row;
+    align-items: center;
+    display: inline-flex;
+    /* align-content: flex-end; *
+    /
     /* align-items: center; */
     margin-top:auto;
     padding: 13px;
@@ -59,24 +76,12 @@
     padding-left: 0%;
     padding-right: 7px;
 }
-.profile {
-    border-bottom: 4px solid rgba(0,0,0, 0.4);
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    /* padding: 10px; */
-    height: 100px;
-    padding-bottom: 0;
-    padding-top: 0;
-    color: gray;
-}
-
 .profileInformation {
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
     padding: 10px;
+    margin: top 0;
     padding-bottom: 0;
     padding-top: 0;
     color: gray;
