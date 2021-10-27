@@ -11,8 +11,7 @@ const SideBar = () => {
 
   const onClicks = () => setShowResults(!showResults);
   return (
-    <div className="sidebar">
-
+    <div className="sidebarContent">
       <div className="profile">
         <div className="profileInformation">
           <AccountCircleIcon className="avatar" />
@@ -34,7 +33,7 @@ const SideBar = () => {
           {showResults
             ? (
               <div className="channels_list">
-                <SideBarChannel name="Ytb" id="0" />
+                <SideBarChannel name="za" id="0" />
                 <SideBarChannel name="Twitter" id="1" />
                 <SideBarChannel name="Twitch" id="2" />
                 <SideBarChannel name="Google" id="3" />
@@ -92,18 +91,19 @@ const SideBar = () => {
               </div>
             )
             : null}
-        </div>
-        <div>
-          <h4>zaezfr</h4>
+          <div className="sidebar_content_header">
+            <div role="button" tabIndex={0} className="sidebar_channels_header">
+              <ExpandMoreIcon />
+              <h5 className="textChannels">{i18n.t('UsersChannel')}</h5>
+            </div>
+          </div>
 
-          <h4>zaezfr</h4>
         </div>
       </div>
       <div className="sidebar_bottom">
         <ExpandMoreIcon />
         <h2>M&apos;enFou</h2>
       </div>
-
     </div>
   );
 };

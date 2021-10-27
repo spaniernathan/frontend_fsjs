@@ -7,12 +7,12 @@ const SideBarChannel = ({ id, name }) => (
   <div className="channel">
     <span><Chat className="icon" /></span>
     <div id={id}>
-      <h3>
+      <p>
         {id}
-      </h3>
-      <h3>
+      </p>
+      <p>
         {name}
-      </h3>
+      </p>
 
     </div>
   </div>

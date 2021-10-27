@@ -1,15 +1,29 @@
-.sidebar {
-   display: flex;
-   flex-direction: column;
-   flex: 0.23;
-   height: 100vh;
-   overflow: overlay;
-
-   background-color: #2f3135; 
+.sidebarContent {
+    display: flex;
+    flex-direction: column;
+    flex: 1.6;
+    width: 100%;
+    height: 100%;
+    
+    overflow:  hidden;
+    border-right: 1vh solid rgba(0,0,0, 0.1);
+    background-color: #313338; 
+  }
+.testong{
+    display:'inline-block';
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
 }
+.chat {
+    display: flex;
+    flex: 0.85;
+    background-color: #313338; 
+}
+ 
 
 .profile {
-    border-bottom: 4px solid rgba(0,0,0, 0.4);
+    border-bottom: 4px solid rgba(0,0,0, 0.3);
 
     display: flex;
     justify-content: space-between;
@@ -25,20 +39,21 @@
     /* display: inli; */
     flex-direction: row;
     align-items: center;
+    justify-content: center;
     display: inline-flex;
+    line-break: auto;
     /* align-content: flex-end; *
     /
     /* align-items: center; */
     margin-top:auto;
-    padding: 13px;
+    padding: 5vh;
+    height: 0px;
     color: white;
-    border-top: 4px solid rgba(0,0,0, 0.4);
+    border-top: 4px solid rgba(0,0,0, 0.3);
 }
 
 
 .scrollView{
-    overflow: overlay;
-    overflow-y: scroll;
     overflow-y: auto;
     background-color: transparent;
 }
@@ -61,6 +76,7 @@
 .sidebar_channels_header{
     display: flex;
     align-items: center;
+    justify-content: center;
     /* margin-top: 10px!imppor; */
 }
 
@@ -68,8 +84,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
-    background-color: #2f3135;
+    padding: 5px;
+    background-color: #313338;
     color: gray;
 }
 .avatar {

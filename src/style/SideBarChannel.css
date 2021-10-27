@@ -3,7 +3,8 @@
     color:gray;
     cursor: pointer;
     align-items: center;
-    padding-left: 40px;
+    padding: 0px;
+    padding-left: 50px;
 }
 
 .icon {
