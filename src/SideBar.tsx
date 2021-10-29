@@ -101,7 +101,6 @@ const SideBar = () => {
         </div>
       </div>
       <div className="sidebar_bottom">
-        <ExpandMoreIcon />
         <h2>M&apos;enFou</h2>
       </div>
     </div>
