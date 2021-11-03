@@ -3,9 +3,9 @@
 /* eslint-disable react/destructuring-assignment */
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import './style/customPopup.css';
+import './style/AddChannelPopup.css';
 
-const CustomPopup = (props): JSX.Element => {
+const AddChannelPopup = (props): JSX.Element => {
   const [show, setShow] = useState(false);
   const enter = (event) => {
     if (event.key === 'Enter') {
@@ -23,6 +23,36 @@ const CustomPopup = (props): JSX.Element => {
     setShow(props.show);
   }, [props.show]);
 
+  if (props.addChannel === true) {
+    return (
+      <div
+        style={{
+          visibility: show ? 'visible' : 'hidden',
+          opacity: show ? '1' : '0',
+          justifyContent: 'center',
+          alignItems: 'center',
+          display: 'flex',
+        }}
+        className="overlay"
+      >
+        <div className="popup">
+          <div className="popup_title">
+            <h2 className="channel_title">
+              Create channel
+              {props.title}
+            </h2>
+            <span role="" className="close" onClick={closeHandler} onKeyDown={(e) => enter(e)}>
+              &times;
+            </span>
+          </div>
+          {/* <form className="f"> */}
+          <input placeholder="Channel name" onKeyDown={(e) => enter(e)} />
+          {/* </form> */}
+          <button type="button" className="add">Add Channel</button>
+        </div>
+      </div>
+    );
+  }
   return (
     <div
       style={{
@@ -37,7 +67,7 @@ const CustomPopup = (props): JSX.Element => {
       <div className="popup">
         <div className="popup_title">
           <h2 className="channel_title">
-            Create channel
+            Add Users
             {props.title}
           </h2>
           <span role="" className="close" onClick={closeHandler} onKeyDown={(e) => enter(e)}>
@@ -53,10 +83,11 @@ const CustomPopup = (props): JSX.Element => {
   );
 };
 
-CustomPopup.propTypes = {
+AddChannelPopup.propTypes = {
   title: PropTypes.string.isRequired,
   show: PropTypes.bool.isRequired,
+  addChannel: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
 };
 
-export default CustomPopup;
+export default AddChannelPopup;

@@ -2,11 +2,13 @@ import React from 'react';
 import ManageAccounts from '@mui/icons-material/ManageAccounts';
 import './style/Chat.css';
 import Message from './Message';
+import AddChannelPopup from './AddChannelPopup';
 
 const Chat = () => {
   const [messages] = React.useState('');
   const [ae, setAe] = React.useState('');
   // const [theArray] = React.useState<string[]>([]);
+  const [showPopup, setShowPopup] = React.useState(false);
 
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
@@ -16,6 +18,8 @@ const Chat = () => {
     }
   };
 
+  const openAddUserPopup = () => setShowPopup(!showPopup);
+
   React.useEffect(() => {
   }, [messages]);
 
@@ -23,7 +27,9 @@ const Chat = () => {
     <div className="chat_content">
       <div className="channel_header">
         <h2 className="title_header">I am the header</h2>
-        <ManageAccounts className="edit" />
+        <div onClick={openAddUserPopup} role="button" tabIndex={0} onKeyDown={openAddUserPopup}>
+          <ManageAccounts className="edit" />
+        </div>
       </div>
       <div className="chat_messages">
         <p>
@@ -56,6 +62,7 @@ const Chat = () => {
           <button type="submit">Send message</button>
         </form>
       </div>
+      <AddChannelPopup title="title1" show={showPopup} onClose={openAddUserPopup} addChannel={false} />
     </div>
 
   );

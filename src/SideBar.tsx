@@ -6,7 +6,7 @@ import Add from '@mui/icons-material/Add';
 import SideBarChannel from './SidebarChannel';
 import './style/SideBar.css';
 import i18n from './i18n';
-import CustomPopup from './CustomPopup';
+import AddChannelPopup from './AddChannelPopup';
 // import { render } from '@testing-library/react';
 
 const SideBar = () => {
@@ -109,7 +109,7 @@ const SideBar = () => {
               <h5 className="textChannels">{i18n.t('UsersChannel')}</h5>
             </div>
           </div>
-          <CustomPopup title="title1" show={showPopup} onClose={renderPopup} />
+          <AddChannelPopup title="title1" show={showPopup} onClose={renderPopup} addChannel />
         </div>
       </div>
       <div className="sidebar_bottom">
