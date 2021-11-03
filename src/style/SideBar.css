@@ -21,6 +21,9 @@
     background-color: #313338; 
 }
  
+.addIcon:hover {
+    color: white;
+}
 
 .profile {
     border-bottom: 4px solid rgba(0,0,0, 0.3);

@@ -2,12 +2,21 @@ import React from 'react';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Logout from '@mui/icons-material/Logout';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import Add from '@mui/icons-material/Add';
 import SideBarChannel from './SidebarChannel';
 import './style/SideBar.css';
 import i18n from './i18n';
+import CustomPopup from './CustomPopup';
+// import { render } from '@testing-library/react';
 
 const SideBar = () => {
   const [showResults, setShowResults] = React.useState(true);
+  const [showPopup, setShowPopup] = React.useState(false);
+
+  const renderPopup = () => {
+    setShowPopup(!showPopup);
+    console.log('pop');
+  };
 
   const onClicks = () => setShowResults(!showResults);
   return (
@@ -28,6 +37,9 @@ const SideBar = () => {
             <div role="button" tabIndex={0} className="sidebar_channels_header" onClick={onClicks} onKeyDown={onClicks}>
               <ExpandMoreIcon />
               <h4 className="textChannels">{i18n.t('textChannels')}</h4>
+            </div>
+            <div onClick={renderPopup} role="button" tabIndex={0} onKeyDown={onClicks}>
+              <Add className="addIcon" />
             </div>
           </div>
           {showResults
@@ -97,7 +109,7 @@ const SideBar = () => {
               <h5 className="textChannels">{i18n.t('UsersChannel')}</h5>
             </div>
           </div>
-
+          <CustomPopup title="title1" show={showPopup} onClose={renderPopup} />
         </div>
       </div>
       <div className="sidebar_bottom">
