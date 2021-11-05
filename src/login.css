@@ -1,0 +1,138 @@
+body {
+    font-family: "Red Hat Display", sans-serif;
+    color: "BB0B0B";
+    font-size: 16px;
+    margin: 0;
+    background-color: #fff;
+}
+
+#header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    border-bottom: 1.5px solid rgba(103, 104, 103, 0.25);
+}
+
+h1 {
+    text-align: center;
+    text-transform: uppercase;
+    font-family: Red Hat Display;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 64px;
+    color: #b40000;
+    padding-left: 10px;
+}
+
+#inscription_rectangle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    gap: 40px;
+    margin-top: 100px;
+    width: 702px;
+    height: 644px;
+    background: #e8e8e8;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+}
+
+h2 {
+    font-family: Red Hat Display;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 48px;
+    color: #b40000;
+}
+
+#inscription_email {
+    font-family: Red Hat Display;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 24px;
+    color: #000000;
+    padding-right: 365px;
+}
+
+#inscription_mdp {
+    font-family: Red Hat Display;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 24px;
+    color: #000000;
+    padding-right: 300px;
+}
+
+#inscription_email_hr {
+    width: 530px;
+    height: 0px;
+    border: 1px solid rgba(60, 116, 60, 0.5);
+    transform: rotate(0.11deg);
+}
+
+#inscription_mdp_hr {
+    width: 530px;
+    height: 0px;
+    border: 1px solid rgba(103, 104, 103, 0.5);
+}
+
+.inscription_connexion_button {
+    width: 300px;
+    height: 70px;
+    background-color: #b40000;
+    border-radius: 80px;
+    font-family: Red Hat Display;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 22px;
+    line-height: 29px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #ffffff;
+    margin-left: 15%;
+}
+
+a {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    color: #b40000;
+    font-family: Red Hat Display;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    line-height: 24px;
+}
+
+input[type="text"],
+textarea {
+    border: none;
+    border-bottom: 1.5px solid rgba(103, 104, 103, 0.5);
+    background-color: #e8e8e8;
+    border-radius: 0px;
+}
+
+input[type="password"],
+label {
+    border: none;
+    border-bottom: 1.5px solid rgba(103, 104, 103, 0.5);
+    background-color: #e8e8e8;
+    border-radius: 0px;
+}
+
+input[type="email"],
+textarea {
+    border: none;
+    border-bottom: 1.5px solid rgba(103, 104, 103, 0.5);
+    background-color: #e8e8e8;
+    border-radius: 0px;
+}
