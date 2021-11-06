@@ -16,7 +16,7 @@ interface SideNavbarProps {
 const SideNavbarWithoutUser = () => (
   <div className="columns is-vcentered is-centered">
     <div className="column">
-      <Link to="login" className="button is-primary">Login</Link>
+      <Link to="login" className="button is-primary color: #B64000">Login</Link>
     </div>
     <div className="column">
       <Link to="register" className="button is-primary">Register</Link>
@@ -45,7 +45,7 @@ const SideNavbarWithUser = ({
 const SideNavbar = ({
   user, auth, room, logout,
 }: PropsWithChildren<SideNavbarProps>) => (
-  <div className="column is-3" style={{ height: '100vh' }}>
+  <div className="column is-2" style={{ height: '100vh' }}>
     <div>Home</div>
     { auth && user ? (
       <SideNavbarWithUser user={user} auth={auth} room={room} logout={logout} />

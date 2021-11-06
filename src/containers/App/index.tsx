@@ -14,15 +14,8 @@ interface AppProps {
 const App = ({
   user, auth, room, children,
 }: PropsWithChildren<AppProps>) => (
-  <div>
-    <div className="columns">
-      <SideNavbar user={null} auth={auth} room={room} />
-      <div className="column">
-        <div className="container">
-          { children }
-        </div>
-      </div>
-    </div>
+  <div className="container">
+    { children }
   </div>
 );
 
