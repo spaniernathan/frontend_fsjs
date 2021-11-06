@@ -8,6 +8,12 @@ export {
 } from './login';
 
 export {
+  LOGOUT,
+  logout,
+  logoutFulfilled,
+} from './logout';
+
+export {
   REGISTER,
   register,
   registerFulfilled,

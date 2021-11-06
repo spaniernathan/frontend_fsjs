@@ -15,7 +15,7 @@ const loginEpic: Epic<any> = (action$) => action$.pipe(
   ofType(LOGIN.REQUEST),
   mergeMap((action: any) => race(
     loginRequest(action.payload).pipe(
-      flatMap((response: any) => of(loginFulfilled({ response }))),
+      flatMap((response: any) => of(loginFulfilled({ response: response.response }))),
       catchError((error) => of(loginRejected(error))),
     ),
     action$.pipe(

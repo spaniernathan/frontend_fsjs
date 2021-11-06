@@ -1,4 +1,4 @@
-import { LOGIN } from '../actions';
+import { LOGIN, LOGOUT } from '../actions';
 
 type InitialStateType = {
   accessToken: string | null
@@ -10,18 +10,18 @@ const initialState: InitialStateType = {
   refreshToken: null,
 };
 
-// localStorage.set(accessToken)
-// localStorage.set(refreshToken)
-
 const authReducer = (state = initialState, action: any) => {
-  console.log('action:', action);
   switch (action.type) {
     case LOGIN.FULFILLED:
+      localStorage.setItem('accessToken', action.payload.response.accessToken);
+      localStorage.setItem('refreshToken', action.payload.response.refreshToken);
       return {
         ...state,
-        ...action.payload,
+        ...action.payload.response,
       };
-    case LOGIN.CANCELLED:
+    case LOGOUT.FULFILLED:
+      localStorage.removeItem('accessToken');
+      localStorage.removeItem('refreshToken');
       return {
         ...state,
         accessToken: null,
