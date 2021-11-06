@@ -1,5 +1,5 @@
 import { RoomType } from '../../types';
-import { CREATE_ROOM, JOIN_ROOM, LEAVE_ROOM } from '../actionTypes';
+import { CREATE_ROOM, JOIN_ROOM, DELETE_ROOM } from '../actions';
 
 type InitialStateType = {
   rooms: Array<RoomType>
@@ -9,9 +9,9 @@ const initialState: InitialStateType = {
   rooms: [],
 };
 
-const roomReducer = (state = initialState, action) => {
+const roomReducer = (state = initialState, action: any) => {
   switch (action.type) {
-    case CREATE_ROOM:
+    case CREATE_ROOM.FULFILLED:
       return {
         ...state,
         rooms: [
@@ -19,7 +19,7 @@ const roomReducer = (state = initialState, action) => {
           { ...action.payloed },
         ],
       };
-    case JOIN_ROOM:
+    case JOIN_ROOM.FULFILLED:
       return {
         ...state,
         rooms: [
@@ -27,7 +27,7 @@ const roomReducer = (state = initialState, action) => {
           { ...action.payloed },
         ],
       };
-    case LEAVE_ROOM:
+    case DELETE_ROOM.FULFILLED:
       return {
         ...state,
         rooms: [

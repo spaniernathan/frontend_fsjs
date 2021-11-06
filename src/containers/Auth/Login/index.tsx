@@ -1,13 +1,8 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { LOGIN } from '../../../redux/actionTypes';
-import { Button } from '../../../components';
+import { login } from 'redux/actions';
 
-type LoginProps = {
-  login: any
-};
-
-const Login = ({ login }: LoginProps) => {
+const Login = ({ loginAction }: any) => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   return (
@@ -43,12 +38,15 @@ const Login = ({ login }: LoginProps) => {
             </div>
             <div className="field">
               <p className="control">
-                <Button
+                <button
+                  className="button is-primary"
                   type="button"
-                  onClick={() => { login({ email, password }); }}
+                  onClick={() => {
+                    loginAction({ email, password });
+                  }}
                 >
                   Login
-                </Button>
+                </button>
               </p>
             </div>
           </div>
@@ -58,8 +56,8 @@ const Login = ({ login }: LoginProps) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  login: (credentials) => dispatch({ type: LOGIN, payload: credentials }),
+const mapDispatchToProps = (dispatch: any) => ({
+  loginAction: (payload: any) => dispatch(login(payload)),
 });
 
 export default connect(null, mapDispatchToProps)(Login);

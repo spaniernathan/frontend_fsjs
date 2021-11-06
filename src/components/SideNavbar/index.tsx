@@ -1,7 +1,6 @@
 import React, { PropsWithChildren } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { LOGOUT } from '../../redux/actionTypes';
 import { UserType, RoomType, AuthType } from '../../types';
 import Room from '../Room';
 
@@ -32,7 +31,7 @@ const SideNavbarWithUser = ({
   return (
     <div className="">
       {room.rooms.map((r) => (
-        <Room room={r} />
+        <Room key={r.id} room={r} />
       ))}
       <div>
         <button type="button" onClick={() => logout}>
@@ -47,6 +46,7 @@ const SideNavbar = ({
   user, auth, room, logout,
 }: PropsWithChildren<SideNavbarProps>) => (
   <div className="column is-3" style={{ height: '100vh' }}>
+    <div>Home</div>
     { auth && user ? (
       <SideNavbarWithUser user={user} auth={auth} room={room} logout={logout} />
     ) : (
@@ -55,8 +55,8 @@ const SideNavbar = ({
   </div>
 );
 
-const mapDispatchToProps = (dispatch) => ({
-  logout: () => dispatch({ type: LOGOUT }),
+const mapDispatchToProps = (dispatch: any) => ({
+  logout: () => dispatch({ type: 'LOGOUT' }),
 });
 
 export default connect(null, mapDispatchToProps)(SideNavbar);

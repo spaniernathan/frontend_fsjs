@@ -1,29 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { Home, Login, Register } from './containers';
 import reportWebVitals from './reportWebVitals';
-import store from './store';
+import configureStore from './store';
+import Routes from './routes';
+
+const store = configureStore();
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="login" element={<Login />} />
-          <Route path="register" element={<Register />} />
-          <Route
-            path="*"
-            element={(
-              <main style={{ padding: '1rem' }}>
-                <p>There is nothing here!</p>
-              </main>
-            )}
-          />
-        </Routes>
+        <Routes />
       </BrowserRouter>
     </Provider>
   </React.StrictMode>,

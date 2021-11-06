@@ -1,4 +1,4 @@
-import { FETCH_USER } from '../actionTypes';
+import { GET_USER } from '../actions';
 
 type InitialStateType = {
   id: string
@@ -10,9 +10,9 @@ const initialState: InitialStateType = {
   displayName: '',
 };
 
-const userReducer = (state = initialState, action) => {
+const userReducer = (state = initialState, action: any) => {
   switch (action.type) {
-    case FETCH_USER:
+    case GET_USER.FULFILLED:
       return {
         ...state,
         ...action.payload,

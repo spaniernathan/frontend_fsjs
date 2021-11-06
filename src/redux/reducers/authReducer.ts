@@ -1,4 +1,4 @@
-import { LOGIN, LOGOUT } from '../actionTypes';
+import { LOGIN } from '../actions';
 
 type InitialStateType = {
   accessToken: string | null
@@ -10,15 +10,18 @@ const initialState: InitialStateType = {
   refreshToken: null,
 };
 
-const authReducer = (state = initialState, action) => {
+// localStorage.set(accessToken)
+// localStorage.set(refreshToken)
+
+const authReducer = (state = initialState, action: any) => {
+  console.log('action:', action);
   switch (action.type) {
-    case LOGIN:
-      console.log(action);
+    case LOGIN.FULFILLED:
       return {
         ...state,
         ...action.payload,
       };
-    case LOGOUT:
+    case LOGIN.CANCELLED:
       return {
         ...state,
         accessToken: null,
