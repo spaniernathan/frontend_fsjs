@@ -7,19 +7,14 @@
     "extends": [
         // "./tsconfig.json",
         "airbnb",
-        "airbnb-typescript",
+        "airbnb-typescript"
     ],
     "rules": {
-        "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".ts", ".tsx"]}],
-        // "react/no-unescaped-entities": 0 
-        "import/no-extraneous-dependencies": ["error", { "devDependencies": true }]
-
-        // "react/jsx-filename-extension": "off"
+        "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".ts", ".tsx"]}]
     },
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "project": "./tsconfig.json",
         "sourceType": "module"
-    },
-
+    }
 }
