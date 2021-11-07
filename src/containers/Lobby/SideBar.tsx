@@ -1,13 +1,21 @@
 import React from 'react';
+import Add from '@mui/icons-material/Add';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Logout from '@mui/icons-material/Logout';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import SideBarChannel from './SidebarChannel';
 import '../style/SideBar.css';
 // import i18n from './i18n';
+import AddChannelPopup from './AddPopup';
 
 const SideBar = () => {
   const [showResults, setShowResults] = React.useState(true);
+  const [showPopup, setShowPopup] = React.useState(false);
+
+  const renderPopup = () => {
+    setShowPopup(!showPopup);
+    console.log('pop');
+  };
 
   const onClicks = () => setShowResults(!showResults);
   return (
@@ -29,6 +37,9 @@ const SideBar = () => {
               <ExpandMoreIcon />
               {/* <h4 className="textChannels">{i18n.t('textChannels')}</h4> */}
               <h4 className="textChannels">Channels</h4>
+            </div>
+            <div onClick={renderPopup} role="button" tabIndex={0} onKeyDown={onClicks}>
+              <Add className="addIcon" />
             </div>
           </div>
           {showResults
@@ -98,6 +109,7 @@ const SideBar = () => {
               {/* <h5 className="textChannels">{i18n.t('UsersChannel')}</h5> */}
             </div>
           </div>
+          <AddChannelPopup title="title1" show={showPopup} onClose={renderPopup} addChannel />
 
         </div>
       </div>

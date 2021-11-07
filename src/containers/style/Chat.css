@@ -11,6 +11,24 @@
     padding-bottom: 10px;
 }
 
+.test_message {
+    color:black
+}
+
+.edit {
+    color:white !important; 
+    padding-right: 50px;
+    transform: scale(1.4);
+}
+
+.title_header {
+    padding: 10px;
+    color: white;
+    display:inline-block;
+    padding-left: 30px;
+    
+}
+
 h2 {
     padding: 10px;
     color: white;
@@ -18,8 +36,14 @@ h2 {
 }
 
 .channel_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     background-color: #404247;
     width: 100%;
+    margin-left:auto;
+margin-right:auto;
+
     flex:0.10;
     border-bottom: 1vh solid rgba(0,0,0, 0.4);
 }
