@@ -1,7 +1,7 @@
 import React from 'react';
 import Chat from '@mui/icons-material/Chat';
 import PropTypes from 'prop-types';
-import Channel from '../../components/Lobby/SideBarChannels/Channel/Channel';
+import Channel from '../../components/Lobby/SideBar/SideBarChannels/Channel/Channel';
 
 const SideBarChannel = ({ id, name }:any) => (
   <Channel className="is-flex is-align-items-center">

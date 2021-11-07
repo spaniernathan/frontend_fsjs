@@ -10,9 +10,9 @@ const ProtectedRoutes = () => {
   const { getState } = useStore();
   const { auth } = getState();
 
-  useEffect(() => {
-    if (!auth.accessToken || !auth.refreshToken) navigate('/login', { replace: true });
-  }, [auth]);
+  // useEffect(() => {
+  //   if (!auth.accessToken || !auth.refreshToken) navigate('/login', { replace: true });
+  // }, [auth]);
 
   return (
     <Routes>

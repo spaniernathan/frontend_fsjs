@@ -7,14 +7,14 @@ import SideBarChannel from './SidebarChannel';
 // import '../style/SideBar.css';
 // import i18n from './i18n';
 import AddChannelPopup from './AddPopup';
-import SideBarContent from '../../components/Lobby/SideBarContent';
-import Profile from '../../components/Lobby/SideBarProfileInformation/Profile';
-import ProfileInformation from '../../components/Lobby/SideBarProfileInformation/ProfileInformation';
-import ScrollView from '../../components/Lobby/ScrollView';
-import SideBarChannels from '../../components/Lobby/SideBarChannels/SideBarChannels';
-import SideBarChannelsHeader from '../../components/Lobby/SideBarChannels/SideBarChannelsHeader';
-import SideBarChannelsTitle from '../../components/Lobby/SideBarChannels/SideBarChannelsTitle';
-import SideBarChannelsAppName from '../../components/Lobby/SideBarChannels/SideBarChannelsAppName';
+import SideBarContent from '../../components/Lobby/SideBar/SideBarContent';
+import Profile from '../../components/Lobby/SideBar/SideBarProfileInformation/Profile';
+import ProfileInformation from '../../components/Lobby/SideBar/SideBarProfileInformation/ProfileInformation';
+import ScrollView from '../../components/Lobby/SideBar/ScrollView';
+import SideBarChannels from '../../components/Lobby/SideBar/SideBarChannels/SideBarChannels';
+import SideBarChannelsHeader from '../../components/Lobby/SideBar/SideBarChannels/SideBarChannelsHeader';
+import SideBarChannelsTitle from '../../components/Lobby/SideBar/SideBarChannels/SideBarChannelsTitle';
+import SideBarChannelsAppName from '../../components/Lobby/SideBar/SideBarChannels/SideBarChannelsAppName';
 
 const SideBar = () => {
   const [showResults, setShowResults] = React.useState(true);

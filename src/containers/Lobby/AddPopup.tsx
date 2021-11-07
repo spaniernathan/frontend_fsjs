@@ -4,8 +4,15 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import '../style/AddChannelPopup.css';
+import ShowPopup from '../../components/Lobby/Popup/ShowPopup';
+import PopupContent from '../../components/Lobby/Popup/PopupContent';
+import PopupTitle from '../../components/Lobby/Popup/PopupTitle';
+import Close from '../../components/Lobby/Popup/Close';
+import PopupMessage from '../../components/Lobby/Popup/PopupMessage';
+import ButtonAddChannel from '../../components/Lobby/Popup/ButtonAddChannel';
 
-const AddChannelPopup = (props : any): JSX.Element => {
+const AddChannelPopup = (props: any): JSX.Element => {
+  console.log('addin channel', props.addChannel);
   const [show, setShow] = useState(false);
   const enter = (event: any) => {
     if (event.key === 'Enter') {
@@ -24,61 +31,55 @@ const AddChannelPopup = (props : any): JSX.Element => {
   }, [props.show]);
 
   if (props.addChannel === true) {
-    // return (
-    //   <div
-    //     style={{
-    //       visibility: show ? 'visible' : 'hidden',
-    //       opacity: show ? '1' : '0',
-    //       justifyContent: 'center',
-    //       alignItems: 'center',
-    //       display: 'flex',
-    //     }}
-    //     className="overlay"
-    //   >
-    //     <div className="popup">
-    //       <div className="popup_title">
-    //         <h2 className="channel_title">
-    //           Create channel
-    //           {props.title}
-    //         </h2>
-    //         <span role="" className="close" onClick={closeHandler} onKeyDown={(e) => enter(e)}>
-    //           &times;
-    //         </span>
-    //       </div>
-    //       {/* <form className="f"> */}
-    //       <input placeholder="Channel name" onKeyDown={(e) => enter(e)} />
-    //       {/* </form> */}
-    //       <button type="button" className="add">Add Channel</button>
-    //     </div>
-    //   </div>
-    // );
+    return (
+      <div
+        style={{
+          visibility: show ? 'visible' : 'hidden',
+          opacity: show ? '1' : '0',
+        }}
+        className="overlay is-flex is-align-items-center is-justify-content-center"
+      >
+        <ShowPopup className="is-align-items-center is-flex-direction-column is-flex is-justify-content-center">
+          <PopupContent className="is-flex is-justify-content-space-between">
+            <PopupTitle className="is-flex is-justify-content-space">
+              Create channel
+              {props.title}
+            </PopupTitle>
+            <Close role="" onClick={closeHandler} onKeyDown={(e) => enter(e)}>
+              &times;
+            </Close>
+          </PopupContent>
+          {/* <form className="f"> */}
+          <PopupMessage placeholder="Channel name" onKeyDown={(e) => enter(e)} />
+          {/* </form> */}
+          <ButtonAddChannel type="button" className="ButtonAddChannel">Add Channel</ButtonAddChannel>
+        </ShowPopup>
+      </div>
+    );
   }
   return (
     <div
       style={{
         visibility: show ? 'visible' : 'hidden',
         opacity: show ? '1' : '0',
-        justifyContent: 'center',
-        alignItems: 'center',
-        display: 'flex',
       }}
-      className="overlay"
+      className="overlay is-flex is-align-items-center is-justify-content-center"
     >
-      <div className="popup">
-        <div className="popup_title">
-          <h2 className="channel_title">
-            Add Users
+      <ShowPopup className="is-align-items-center is-flex-direction-column is-flex is-justify-content-center">
+        <PopupContent className="is-flex is-justify-content-space-between">
+          <PopupTitle className="is-flex is-justify-content-space">
+            Create channel
             {props.title}
-          </h2>
-          <span role="" className="close" onClick={closeHandler} onKeyDown={(e) => enter(e)}>
+          </PopupTitle>
+          <Close role="" onClick={closeHandler} onKeyDown={(e) => enter(e)}>
             &times;
-          </span>
-        </div>
+          </Close>
+        </PopupContent>
         {/* <form className="f"> */}
-        <input placeholder="Channel name" onKeyDown={(e) => enter(e)} />
+        <PopupMessage placeholder="Channel name" onKeyDown={(e) => enter(e)} />
         {/* </form> */}
-        <button type="button" className="add">Add Channel</button>
-      </div>
+        <ButtonAddChannel type="button" className="ButtonAddChannel">Add Channel</ButtonAddChannel>
+      </ShowPopup>
     </div>
   );
 };
