@@ -14,5 +14,5 @@ if (!('error' in result)) {
 
 export default {
   nodeEnv: envs.NODE_ENV,
-  apiHost: envs.NODE_ENV === 'development' ? 'http://localhost:9000' : 'https://fsjs-menfou.herokuapp.com/',
+  apiHost: envs.NODE_ENV === 'development' ? 'http://localhost:9000' : 'https://fsjs-menfou.herokuapp.com',
 };
