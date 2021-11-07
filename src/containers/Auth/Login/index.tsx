@@ -20,7 +20,7 @@ const Login = ({ loginAction, auth }: any) => {
   const [password, setPassword] = useState<string>('');
 
   useEffect(() => {
-    if (auth.accessToken && auth.refreshToken) navigate('/', { replace: true });
+    if (auth.accessToken && auth.refreshToken) navigate('/lobby', { replace: true });
   }, [auth]);
 
   return (

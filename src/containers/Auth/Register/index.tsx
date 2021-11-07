@@ -21,7 +21,7 @@ const Register = ({ registerAction, auth }: any) => {
   const [displayName, setDisplayName] = useState<string>('');
 
   useEffect(() => {
-    if (auth.accessToken && auth.refreshToken) navigate('/', { replace: true });
+    if (auth.accessToken && auth.refreshToken) navigate('/lobby', { replace: true });
   }, [auth]);
 
   return (
