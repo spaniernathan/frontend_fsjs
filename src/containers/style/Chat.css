@@ -1,0 +1,115 @@
+.chat_content{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden; /* Hide scrollbars */
+    background-color: #404247;
+    /* background-color:  rgba(47,49,53, 1); */
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10px;
+}
+
+.test_message {
+    color:black
+}
+
+.edit {
+    color:white !important; 
+    padding-right: 50px;
+    transform: scale(1.4);
+}
+
+.title_header {
+    padding: 10px;
+    color: white;
+    display:inline-block;
+    padding-left: 30px;
+    
+}
+
+h2 {
+    padding: 10px;
+    color: white;
+    padding-left: 30px;
+}
+
+.channel_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #404247;
+    width: 100%;
+    margin-left:auto;
+margin-right:auto;
+
+    flex:0.10;
+    border-bottom: 1vh solid rgba(0,0,0, 0.4);
+}
+
+.chat_messages {
+    /* background-color: violet; */
+    width: 100%;
+    overflow-y: auto;
+    display: flex;
+    flex: 0.90;
+    flex-direction: column-reverse;
+}
+
+.chat_input {
+    justify-content: center;
+    align-items: center;
+    width: 93%;
+    display: flex;
+    /* height: 53%; */
+    flex: 0.1;
+    padding: 10px;
+    border-radius: 17px;
+    border-top: 1vh solid rgba(47,49,53, 0.6);
+
+    background-color:  rgba(47,49,53, 0.4);
+}
+
+input {
+    background: transparent;
+    border: none;
+    padding: 15px;
+    outline-width: 0px;
+    border-radius: 20px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.09),
+                0 10px 4px rgba(0,0,0,0.09),
+                0 10px 8px rgba(0,0,0,0.09),
+                0 8px 16px rgba(0,0,0,0.09),
+                0 16px 32px rgba(0,0,0,0.09),
+                0 32px 64px rgba(0,0,0,0.09);
+    color: white;
+    width: 80%;
+    background-color:  rgba(47,49,53, 0.8);
+    align-content: space-between;
+    font-size: medium;
+                
+}
+
+
+.scrollMessages {
+}
+
+form {
+    display: flex;
+    /* width: auto; */
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    /* background-color: red; */
+    /* padding: 10px; */
+    display: inline-block;
+    padding: 0;
+  
+}
+
+
+button {
+    margin:20px;
+}

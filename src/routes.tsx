@@ -28,7 +28,7 @@ const MyRoutes = () => (
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/lobby" element={<ProtectedRoutes />} />
-      <Route element={<NotFound />} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   </App>
 );
