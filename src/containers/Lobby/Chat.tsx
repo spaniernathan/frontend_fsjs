@@ -10,7 +10,6 @@ import ChatMessages from '../../components/Lobby/Chat/ChatMessage';
 import TextBox from '../../components/Lobby/Chat/TextBox';
 import WriteMessage from '../../components/Lobby/Chat/WriteMessage';
 import Form from '../../components/Lobby/Chat/Form';
-import { getRoomMessages } from '../../redux/actions';
 
 type ChatProps = {
   room: any
@@ -70,6 +69,6 @@ const mapStateToProps = (store: any) => {
   };
 };
 
-const mapDispatchToProps = (dispatch: any) => ({});
+const mapDispatchToProps = () => ({});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Chat);
