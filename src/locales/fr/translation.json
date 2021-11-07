@@ -1,3 +1,11 @@
 {
-    "loginPage.title": "SE CONNECTER"
+    "loginPage.title": "SE CONNECTER",
+    "loginPage.button": "Se connecter",
+    "loginPage.registerLink": "Créer un compte",
+    "loginPage.password": "Mot de passe",
+    
+    "registerPage.title": "CREER MON COMPTE",
+    "registerPage.button": "Créer mon compte",
+    "registerPage.loginLink": "Se connecter",
+    "registerPage.password": "Mot de passe"
 }

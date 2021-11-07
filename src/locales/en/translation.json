@@ -1,3 +1,12 @@
 {
-    "loginPage.title": "LOGIN"
+    "loginPage.title": "LOGIN",
+    "loginPage.button": "Login",
+    "loginPage.registerLink": "Register",
+    "loginPage.password": "Password",
+
+    "registerPage.title": "REGISTER",
+    "registerPage.button": "Register",
+    "registerPage.loginLink": "Login",
+    "registerPage.password": "Password"
+}
 }
