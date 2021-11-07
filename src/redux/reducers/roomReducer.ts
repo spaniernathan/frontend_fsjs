@@ -1,6 +1,6 @@
 import { RoomType } from '../../types';
 import {
-  CREATE_ROOM, JOIN_ROOM, DELETE_ROOM, GET_ROOMS, GET_ROOM_MESSAGES,
+  CREATE_ROOM, JOIN_ROOM, DELETE_ROOM, GET_ROOMS,
 } from '../actions';
 
 type InitialStateType = {
@@ -38,13 +38,6 @@ const roomReducer = (state = initialState, action: any) => {
           ...state.rooms,
           ...action.payload.response,
         ],
-      };
-    case GET_ROOM_MESSAGES:
-      return {
-        ...state,
-        messages: action.payload.response.reduce(
-          (acc: any, curr: any) => ({ ...acc, [curr.roomUuid]: curr }), {},
-        ),
       };
     case DELETE_ROOM.FULFILLED:
       return {
