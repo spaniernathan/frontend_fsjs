@@ -41,7 +41,7 @@
   },
   "scripts": {
     "dev": "env-cmd -f .env.local react-scripts start",
-    "start": "serve -s build",
+    "start": "yarn install server; serve -s build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "lint": "eslint src/**/*.{ts,tsx}",
