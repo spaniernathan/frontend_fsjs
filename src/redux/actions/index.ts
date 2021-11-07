@@ -72,12 +72,3 @@ export {
   changeLanguage,
   changeLanguageFulfilled,
 } from './language';
-
-export {
-  GET_ROOM_MESSAGES,
-  getRoomMessages,
-  getRoomMessagesFulfilled,
-  getRoomMessagesCancelled,
-  getRoomMessagesRejected,
-  getRoomMessagesRequest,
-} from './getRoomMessages';
