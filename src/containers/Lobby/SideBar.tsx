@@ -20,13 +20,14 @@ import SideBarChannelsAppName from '../../components/Lobby/SideBar/SideBarChanne
 
 type SidebarProps = {
   room: any
+  user: any
   createRoomAction: any
   setRoom: any
   selectedRoom: any
 };
 
 const SideBar = ({
-  room, createRoomAction, setRoom, selectedRoom,
+  room, createRoomAction, setRoom, selectedRoom, user,
 }: SidebarProps) => {
   const [showResults, setShowResults] = useState(true);
   const [showPopup, setShowPopup] = useState(false);
@@ -44,7 +45,7 @@ const SideBar = ({
       <Profile className="is-flex is-justify-content-space-between is-align-items-center">
         <ProfileInformation className="is-flex is-justify-content-flex-start is-align-items-center">
           <AccountCircleIcon className="mr-2" />
-          <h3>zaezf</h3>
+          <h3>{user.displayName}</h3>
         </ProfileInformation>
         <Logout />
       </Profile>

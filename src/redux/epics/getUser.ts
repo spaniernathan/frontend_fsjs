@@ -14,7 +14,7 @@ import {
 const getUserEpic: Epic<any> = (action$) => action$.pipe(
   ofType(GET_USER.REQUEST),
   mergeMap((action: any) => race(
-    getUserRequest(action.payload).pipe(
+    getUserRequest().pipe(
       flatMap((response: any) => of(getUserFulfilled({ response: response.response }))),
       catchError((error) => of(getUserRejected(error))),
     ),

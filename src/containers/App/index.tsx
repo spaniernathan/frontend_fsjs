@@ -1,32 +1,32 @@
-import React, { PropsWithChildren } from 'react';
+import React, { PropsWithChildren, useEffect } from 'react';
 import { connect } from 'react-redux';
-import SideNavbar from '../../components/SideNavbar';
-import { UserType, AuthType, RoomType } from '../../types';
+import { getUser } from 'redux/actions';
 
 interface AppProps {
-  user: UserType
-  auth: AuthType
-  room: {
-    rooms: Array<RoomType>
-  }
+  auth: any
+  getUserAction: any
 }
-
 const App = ({
-  user, auth, room, children,
-}: PropsWithChildren<AppProps>) => (
-  <div>
-    { children }
-  </div>
-);
+  auth, getUserAction, children,
+}: PropsWithChildren<AppProps>) => {
+  useEffect(() => {
+    getUserAction();
+  }, [auth]);
+  return (
+    <div>
+      { children }
+    </div>
+  );
+};
 
-const mapDispatchToProps = () => ({});
+const mapDispatchToProps = (dispatch: any) => ({
+  getUserAction: () => dispatch(getUser()),
+});
 
 const mapStateToProps = (store: any) => {
-  const { user, auth, room } = store;
+  const { auth } = store;
   return ({
-    user,
     auth,
-    room,
   });
 };
 
