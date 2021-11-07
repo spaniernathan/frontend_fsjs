@@ -40,7 +40,8 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "env-cmd -f .env.local react-scripts start",
+    "dev": "env-cmd -f .env.local react-scripts start",
+    "start": "serve -s build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "lint": "eslint src/**/*.{ts,tsx}",
