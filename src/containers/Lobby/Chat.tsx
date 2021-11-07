@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import ManageAccounts from '@mui/icons-material/ManageAccounts';
 // import '../style/Chat.css';
 import { connect } from 'react-redux';
@@ -13,20 +13,14 @@ import Form from '../../components/Lobby/Chat/Form';
 import { getRoomMessages } from '../../redux/actions';
 
 type ChatProps = {
-  messages: Array<any>
   room: any
-  getRoomMessagesAction: any
 }
 
-const Chat = ({ messages, room, getRoomMessagesAction }: ChatProps) => {
-  // const [messages] = React.useState('');
-  const [message, setMessage] = React.useState('');
-  // const [theArray] = React.useState<string[]>([]);
-  const [showPopup, setShowPopup] = React.useState(false);
-
-  useEffect(() => {
-    if (room) getRoomMessagesAction(room.uuid);
-  }, [room]);
+const Chat = ({ room }: ChatProps) => {
+  // const [messages] = useState('');
+  const [message, setMessage] = useState('');
+  // const [theArray] = useState<string[]>([]);
+  const [showPopup, setShowPopup] = useState(false);
 
   const handleKeyDown = (event : any) => {
     if (event.key === 'Enter') {
@@ -49,12 +43,8 @@ const Chat = ({ messages, room, getRoomMessagesAction }: ChatProps) => {
         </div>
       </ChatHeader>
       <ChatMessages className="is-flex is-flex-direction-column-reverse">
-        <p>
-          EAZ
-          {message}
-        </p>
         {
-          messages && messages.map((m: any) => (
+          room && room.messages && room.messages.map((m: any) => (
             <Message key={m.uuid} message={m} />
           ))
         }
@@ -73,15 +63,13 @@ const Chat = ({ messages, room, getRoomMessagesAction }: ChatProps) => {
 };
 
 const mapStateToProps = (store: any) => {
-  const { user, messages } = store;
+  const { user, room } = store;
   return {
     user,
-    messages,
+    messages: room.messages,
   };
 };
 
-const mapDispatchToProps = (dispatch: any) => ({
-  getRoomMessagesAction: (roomId: string) => dispatch(getRoomMessages(roomId)),
-});
+const mapDispatchToProps = (dispatch: any) => ({});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Chat);

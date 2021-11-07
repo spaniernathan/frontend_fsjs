@@ -12,7 +12,7 @@ const getRoomMessagesCancelled = (payload: any) => ({ type: GET_ROOM_MESSAGES.CA
 const getRoomMessagesRejected = (payload: any) => ({ type: GET_ROOM_MESSAGES.REJECTED, payload });
 const getRoomMessagesRequest = (
   payload: GetRoomMessagesRequestType,
-) => api.resources.rooms.getRoomMessages({
+) => api.resources.messages.getRoomMessages({
   params: { ...payload },
 });
 

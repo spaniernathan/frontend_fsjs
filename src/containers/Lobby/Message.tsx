@@ -1,5 +1,6 @@
 import React from 'react';
 // import '../style/Message.css';
+import moment from 'moment';
 import MessageContent from '../../components/Lobby/Message/Message';
 import UserMessage from '../../components/Lobby/Message/UserMessage';
 import MessageTimestamp from '../../components/Lobby/Message/MessageTimestamp';
@@ -19,7 +20,7 @@ const Message = ({ message }: MessageProps) => {
     <MessageContent className="message">
       <UserMessage>
         {displayName}
-        <MessageTimestamp className="">{createdAt}</MessageTimestamp>
+        <MessageTimestamp className="">{moment(createdAt).format('DD MM YYYY hh:mm:ss')}</MessageTimestamp>
       </UserMessage>
       <MessageText>{value}</MessageText>
     </MessageContent>

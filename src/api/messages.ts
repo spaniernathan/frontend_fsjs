@@ -1,7 +1,7 @@
 import { RxjsWrapper } from 'rxjs-ajax-wrapper';
 import config from 'config';
 
-const RoomsAPI = new RxjsWrapper({
+const MessagesAPI = new RxjsWrapper({
   getRoomMessages: {
     url: `${config.apiHost}/api/rooms/:roomId/messages`,
     method: 'GET',
@@ -9,4 +9,4 @@ const RoomsAPI = new RxjsWrapper({
   },
 });
 
-export default RoomsAPI;
+export default MessagesAPI;
