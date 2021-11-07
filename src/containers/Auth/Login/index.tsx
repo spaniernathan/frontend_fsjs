@@ -7,6 +7,7 @@ import {
   Input,
   Title,
   Links,
+  Div,
 } from '../../../components';
 
 // If already logged in => redirect to home page
@@ -25,10 +26,13 @@ const Login = ({ loginAction, auth }: any) => {
       <div className="box border-color: transparent transparent $grey $grey !important is-full has-text-centered">
         <Title>M&apos;EN FOUS</Title>
       </div>
-      <div className="container box">
-        <Title> LOGIN</Title>
+      <Div className="container box background-color #e8e8e8">
+        <div className="field has-text-centered">
+          <Title> LOGIN</Title>
+        </div>
         <div className="field">
           <p className="control has-icons-left">
+            <h3>Email</h3>
             <Input
               className="input"
               type="email"
@@ -43,6 +47,7 @@ const Login = ({ loginAction, auth }: any) => {
         </div>
         <div className="field">
           <p className="control has-icons-left">
+            <h3>Password</h3>
             <Input
               className="input"
               type="password"
@@ -58,7 +63,7 @@ const Login = ({ loginAction, auth }: any) => {
         <div className="field">
           <p className="control">
             <Button
-              className="button"
+              className="button is-centered"
               type="button"
               onClick={() => {
                 loginAction({ email, password });
@@ -68,7 +73,7 @@ const Login = ({ loginAction, auth }: any) => {
             </Button>
           </p>
         </div>
-      </div>
+      </Div>
       <Links to="/register">Register</Links>
     </div>
   );
