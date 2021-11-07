@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ManageAccounts from '@mui/icons-material/ManageAccounts';
 // import '../style/Chat.css';
+import { connect } from 'react-redux';
 import Message from './Message';
 import AddUserPopup from './AddPopup';
 import ChatContent from '../../components/Lobby/Chat/ChatContent';
@@ -9,15 +10,27 @@ import ChatMessages from '../../components/Lobby/Chat/ChatMessage';
 import TextBox from '../../components/Lobby/Chat/TextBox';
 import WriteMessage from '../../components/Lobby/Chat/WriteMessage';
 import Form from '../../components/Lobby/Chat/Form';
+import { getRoomMessages } from '../../redux/actions';
 
-const Chat = () => {
+type ChatProps = {
+  messages: Array<any>
+  room: any
+  getRoomMessagesAction: any
+}
+
+const Chat = ({ messages, room, getRoomMessagesAction }: ChatProps) => {
   // const [messages] = React.useState('');
   const [message, setMessage] = React.useState('');
   // const [theArray] = React.useState<string[]>([]);
   const [showPopup, setShowPopup] = React.useState(false);
 
+  useEffect(() => {
+    if (room) getRoomMessagesAction(room.uuid);
+  }, [room]);
+
   const handleKeyDown = (event : any) => {
     if (event.key === 'Enter') {
+      // TODO: send message through socket.emit({ value, ownerId, roomId });
       setMessage(event.target.value);
     }
   };
@@ -27,9 +40,6 @@ const Chat = () => {
   // };
   const openAddUserPopup = () => setShowPopup(!showPopup);
 
-  // React.useEffect(() => {
-  //   console.log();
-  // }, [messages]);
   return (
     <ChatContent className="is-flex is-flex-direction-column is-justify-content-center is-align-items-center">
       <ChatHeader className="is-flex is-justify-content-space-between is-align-items-center ">
@@ -43,25 +53,11 @@ const Chat = () => {
           EAZ
           {message}
         </p>
-        <Message />
-        <Message />
-        <Message />
-        <Message />
-        <Message />
-        <Message />
-        <Message />
-        <Message />
-        <Message />
-        <Message />
-        <Message />
-        <Message />
-        <Message />
-        <Message />
-        <Message />
-        <Message />
-        <Message />
-        <Message />
-        <Message />
+        {
+          messages && messages.map((m: any) => (
+            <Message key={m.uuid} message={m} />
+          ))
+        }
       </ChatMessages>
       <TextBox className="is-justify-content-center is-align-items-center is-flex">
         <Form className="is-flex is-justify-content-center is-inline-block is-align-content-center">
@@ -76,4 +72,16 @@ const Chat = () => {
   );
 };
 
-export default Chat;
+const mapStateToProps = (store: any) => {
+  const { user, messages } = store;
+  return {
+    user,
+    messages,
+  };
+};
+
+const mapDispatchToProps = (dispatch: any) => ({
+  getRoomMessagesAction: (roomId: string) => dispatch(getRoomMessages(roomId)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Chat);

@@ -5,14 +5,25 @@ import UserMessage from '../../components/Lobby/Message/UserMessage';
 import MessageTimestamp from '../../components/Lobby/Message/MessageTimestamp';
 import MessageText from '../../components/Lobby/Message/MessageText';
 
-const Message = () => (
-  <MessageContent className="message">
-    <UserMessage>
-      username
-      <MessageTimestamp className="">this is a timestamp</MessageTimestamp>
-    </UserMessage>
-    <MessageText>zdefrthis is a timestampthis is timestampthis is a timestampthis is </MessageText>
-  </MessageContent>
-);
+type MessageProps = {
+  message: {
+    displayName: string
+    createdAt: string
+    value: string
+  }
+}
+
+const Message = ({ message }: MessageProps) => {
+  const { displayName, createdAt, value } = message;
+  return (
+    <MessageContent className="message">
+      <UserMessage>
+        {displayName}
+        <MessageTimestamp className="">{createdAt}</MessageTimestamp>
+      </UserMessage>
+      <MessageText>{value}</MessageText>
+    </MessageContent>
+  );
+};
 
 export default Message;

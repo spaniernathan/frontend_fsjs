@@ -3,13 +3,19 @@ import Chat from '@mui/icons-material/Chat';
 import PropTypes from 'prop-types';
 import Channel from '../../components/Lobby/SideBar/SideBarChannels/Channel/Channel';
 
-const SideBarChannel = ({ id, name }:any) => (
-  <Channel className="is-flex is-align-items-center">
+type SideBarChannelProps = {
+  id: string
+  keyValue: string
+  name: string
+  onClick: any
+};
+
+const SideBarChannel = ({
+  id, keyValue, name, onClick,
+}: SideBarChannelProps) => (
+  <Channel key={keyValue} className="is-flex is-align-items-center" onClick={onClick}>
     <span><Chat className="icon" /></span>
     <div id={id}>
-      <p>
-        {id}
-      </p>
       <p>
         {name}
       </p>

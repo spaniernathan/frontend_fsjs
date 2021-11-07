@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Add from '@mui/icons-material/Add';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Logout from '@mui/icons-material/Logout';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { createRoom } from 'redux/actions';
+import { connect } from 'react-redux';
 import SideBarChannel from './SidebarChannel';
 // import '../style/SideBar.css';
 // import i18n from './i18n';
@@ -16,16 +18,27 @@ import SideBarChannelsHeader from '../../components/Lobby/SideBar/SideBarChannel
 import SideBarChannelsTitle from '../../components/Lobby/SideBar/SideBarChannels/SideBarChannelsTitle';
 import SideBarChannelsAppName from '../../components/Lobby/SideBar/SideBarChannels/SideBarChannelsAppName';
 
-const SideBar = () => {
-  const [showResults, setShowResults] = React.useState(true);
-  const [showPopup, setShowPopup] = React.useState(false);
+type SidebarProps = {
+  room: any
+  createRoomAction: any
+  setRoom: any
+  selectedRoom: any
+};
+
+const SideBar = ({
+  room, createRoomAction, setRoom, selectedRoom,
+}: SidebarProps) => {
+  const [showResults, setShowResults] = useState(true);
+  const [showPopup, setShowPopup] = useState(false);
 
   const renderPopup = () => {
     setShowPopup(!showPopup);
-    console.log('pop');
   };
 
   const onClicks = () => setShowResults(!showResults);
+
+  // if room === selectedRoom => show room is selected
+
   return (
     <SideBarContent className="is-flex is-flex-direction-column is-clipped">
       <Profile className="is-flex is-justify-content-space-between is-align-items-center">
@@ -50,61 +63,15 @@ const SideBar = () => {
           {showResults
             ? (
               <div className="channels_list">
-                <SideBarChannel name="za" id="0" />
-                <SideBarChannel name="Twitter" id="1" />
-                <SideBarChannel name="Twitch" id="2" />
-                <SideBarChannel name="Google" id="3" />
-                <SideBarChannel name="Inst" id="4" />
-                <SideBarChannel name="Ytb" id="0" />
-                <SideBarChannel name="Twitter" id="1" />
-                <SideBarChannel name="Twitch" id="2" />
-                <SideBarChannel name="Google" id="3" />
-                <SideBarChannel name="Inst" id="4" />
-                <SideBarChannel name="Ytb" id="0" />
-                <SideBarChannel name="Twitter" id="1" />
-                <SideBarChannel name="Twitch" id="2" />
-                <SideBarChannel name="Google" id="3" />
-                <SideBarChannel name="Inst" id="4" />
-                <SideBarChannel name="Ytb" id="0" />
-                <SideBarChannel name="Twitter" id="1" />
-                <SideBarChannel name="Twitch" id="2" />
-                <SideBarChannel name="Google" id="3" />
-                <SideBarChannel name="Inst" id="4" />
-                <SideBarChannel name="Ytb" id="0" />
-                <SideBarChannel name="Twitter" id="1" />
-                <SideBarChannel name="Twitch" id="2" />
-                <SideBarChannel name="Google" id="3" />
-                <SideBarChannel name="Inst" id="4" />
-                <SideBarChannel name="Ytb" id="0" />
-                <SideBarChannel name="Twitter" id="1" />
-                <SideBarChannel name="Twitch" id="2" />
-                <SideBarChannel name="Google" id="3" />
-                <SideBarChannel name="Inst" id="4" />
-                <SideBarChannel name="Ytb" id="0" />
-                <SideBarChannel name="Twitter" id="1" />
-                <SideBarChannel name="Twitch" id="2" />
-                <SideBarChannel name="Google" id="3" />
-                <SideBarChannel name="Inst" id="4" />
-                <SideBarChannel name="Ytb" id="0" />
-                <SideBarChannel name="Twitter" id="1" />
-                <SideBarChannel name="Twitch" id="2" />
-                <SideBarChannel name="Google" id="3" />
-                <SideBarChannel name="Inst" id="4" />
-                <SideBarChannel name="Ytb" id="0" />
-                <SideBarChannel name="Twitter" id="1" />
-                <SideBarChannel name="Twitch" id="2" />
-                <SideBarChannel name="Google" id="3" />
-                <SideBarChannel name="Inst" id="4" />
-                <SideBarChannel name="Ytb" id="0" />
-                <SideBarChannel name="Twitter" id="1" />
-                <SideBarChannel name="Twitch" id="2" />
-                <SideBarChannel name="Google" id="3" />
-                <SideBarChannel name="Inst" id="4" />
-                <SideBarChannel name="Ytb" id="0" />
-                <SideBarChannel name="Twitter" id="1" />
-                <SideBarChannel name="Twitch" id="2" />
-                <SideBarChannel name="Google" id="3" />
-                <SideBarChannel name="Inst" id="4" />
+                { room.rooms && room.rooms.map((r: any) => (
+                  <SideBarChannel
+                    key={r.uuid}
+                    keyValue={r.uuid}
+                    name={r.roomName}
+                    id={r.uuid}
+                    onClick={() => { setRoom(r); }}
+                  />
+                )) }
               </div>
             )
             : null}
@@ -119,4 +86,17 @@ const SideBar = () => {
   );
 };
 
-export default SideBar;
+const mapStateToProps = (store: any) => {
+  const { auth, user, room } = store;
+  return {
+    auth,
+    user,
+    room,
+  };
+};
+
+const mapDispatchToProps = (dispatch: any) => ({
+  createRoomAction: (payload: any) => dispatch(createRoom(payload)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(SideBar);

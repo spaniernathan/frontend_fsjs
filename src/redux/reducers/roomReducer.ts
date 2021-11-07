@@ -18,7 +18,7 @@ const roomReducer = (state = initialState, action: any) => {
         ...state,
         rooms: [
           ...state.rooms,
-          { ...action.payloed },
+          { ...action.payload.response },
         ],
       };
     case JOIN_ROOM.FULFILLED:
@@ -26,7 +26,7 @@ const roomReducer = (state = initialState, action: any) => {
         ...state,
         rooms: [
           ...state.rooms,
-          { ...action.payloed },
+          { ...action.payload.response },
         ],
       };
     case GET_ROOMS.FULFILLED:
@@ -34,7 +34,7 @@ const roomReducer = (state = initialState, action: any) => {
         ...state,
         rooms: [
           ...state.rooms,
-          { ...action.payloed },
+          ...action.payload.response,
         ],
       };
     case DELETE_ROOM.FULFILLED:

@@ -17,7 +17,7 @@ const userReducer = (state = initialState, action: any) => {
     case GET_USER.FULFILLED:
       return {
         ...state,
-        ...action.payload,
+        ...action.payload.response,
       };
     case CHANGE_LANGUAGE.FULFILLED:
       return {
