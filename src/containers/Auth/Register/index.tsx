@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { register } from 'redux/actions';
+import { useTranslation } from 'react-i18next';
+
 import {
   Button,
   Input,
@@ -12,6 +14,8 @@ import {
 
 const Register = ({ registerAction, auth }: any) => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
+
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [displayName, setDisplayName] = useState<string>('');
@@ -27,11 +31,11 @@ const Register = ({ registerAction, auth }: any) => {
       </Div>
       <Div className="container box background-color #e8e8e8">
         <div className="field has-text-centered">
-          <Title theme={{ fontSize: '30px' }}>REGISTER</Title>
+          <Title theme={{ fontSize: '30px' }}>{t('registerPage.title')}</Title>
         </div>
         <div className="field">
           <p className="control has-icons-left">
-            <h3>Email</h3>
+            <h3>{t('email')}</h3>
             <Input
               className="input"
               type="email"
@@ -42,7 +46,7 @@ const Register = ({ registerAction, auth }: any) => {
         </div>
         <div className="field">
           <p className="control has-icons-left">
-            <h3>Password</h3>
+            <h3>{t('password')}</h3>
             <Input
               className="input"
               type="password"
@@ -53,7 +57,7 @@ const Register = ({ registerAction, auth }: any) => {
         </div>
         <div className="field">
           <p className="control has-icons-left">
-            <h3>Username</h3>
+            <h3>{t('username')}</h3>
             <Input
               className="input"
               type="text"
@@ -72,12 +76,12 @@ const Register = ({ registerAction, auth }: any) => {
                 navigate('/login');
               }}
             >
-              Register
+              {t('registerPage.button')}
             </Button>
           </p>
         </div>
       </Div>
-      <Links to="/Login">Login</Links>
+      <Links to="/Login">{t('loginPage.button')}</Links>
     </div>
   );
 };

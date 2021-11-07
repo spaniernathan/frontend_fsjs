@@ -2,10 +2,10 @@
     "loginPage.title": "LOGIN",
     "loginPage.button": "Login",
     "loginPage.registerLink": "Register",
-    "loginPage.password": "Password",
-
+    "password": "Password",
+    "email": "Email",
+    "username": "Username",
     "registerPage.title": "REGISTER",
     "registerPage.button": "Register",
-    "registerPage.loginLink": "Login",
-    "registerPage.password": "Password"
+    "registerPage.loginLink": "Login"
 }

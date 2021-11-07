@@ -2,10 +2,10 @@
     "loginPage.title": "SE CONNECTER",
     "loginPage.button": "Se connecter",
     "loginPage.registerLink": "Créer un compte",
-    "loginPage.password": "Mot de passe",
-    
+    "email": "Adresse mail",
+    "password": "Mot de passe",
+    "username": "Nom d'utilisateur",
     "registerPage.title": "CREER MON COMPTE",
     "registerPage.button": "Créer mon compte",
-    "registerPage.loginLink": "Se connecter",
-    "registerPage.password": "Mot de passe"
+    "registerPage.loginLink": "Se connecter"
 }

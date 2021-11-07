@@ -34,7 +34,7 @@ const Login = ({ loginAction, auth }: any) => {
         </div>
         <div className="field">
           <p className="control has-icons-left">
-            <h3>Email</h3>
+            <h3>{t('email')}</h3>
             <Input
               className="input"
               type="email"
@@ -49,7 +49,7 @@ const Login = ({ loginAction, auth }: any) => {
         </div>
         <div className="field">
           <p className="control has-icons-left">
-            <h3>{t('loginPage.password')}</h3>
+            <h3>{t('password')}</h3>
             <Input
               className="input"
               type="password"
