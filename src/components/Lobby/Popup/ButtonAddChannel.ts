@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const ButtonAddChannel = styled.button`
-background-color: #4CAF50; /* Green */
+background-color: #b40000; /* Green */
 border: none;
 color: white;
 padding: 12px ;

@@ -78,7 +78,7 @@ const AddChannelPopup = (props: any): JSX.Element => {
         {/* <form className="f"> */}
         <PopupMessage placeholder="Channel name" onKeyDown={(e) => enter(e)} />
         {/* </form> */}
-        <ButtonAddChannel type="button" className="ButtonAddChannel">Add Channel</ButtonAddChannel>
+        <ButtonAddChannel type="button" className="ButtonAddChannel">Add Member</ButtonAddChannel>
       </ShowPopup>
     </div>
   );

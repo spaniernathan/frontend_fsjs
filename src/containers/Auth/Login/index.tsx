@@ -24,13 +24,13 @@ const Login = ({ loginAction, auth }: any) => {
   }, [auth]);
 
   return (
-    <div className="section">
-      <div className="box border-color: transparent transparent $grey $grey !important is-full has-text-centered">
-        <Title>M&apos;EN FOUS</Title>
-      </div>
+    <div className="section is-flex is-justify-content-center is-align-items-center is-flex-direction-column" style={{ width: '100vw' }}>
+      <Div theme={{ bgColor: 'fff' }} className="box border-color: transparent transparent $grey $grey !important is-full has-text-centered">
+        <Title theme={{ fontSize: '40px' }}>M&apos;EN FOUS</Title>
+      </Div>
       <Div className="container box background-color #e8e8e8">
         <div className="field has-text-centered">
-          <Title>{t('loginPage.title')}</Title>
+          <Title theme={{ fontSize: '30px' }}>{t('loginPage.title')}</Title>
         </div>
         <div className="field">
           <p className="control has-icons-left">
