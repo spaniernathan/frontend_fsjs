@@ -22,19 +22,6 @@ const roomReducer = (state = initialState, action: any) => {
         },
       };
     case MSG_RECEIVED.FULFILLED:
-      console.log({
-        ...state,
-        rooms: {
-          ...state.rooms,
-          [action.payload.roomUuid]: {
-            ...state.rooms[action.payload.roomUuid],
-            messages: [
-              ...state.rooms[action.payload.roomUuid].messages,
-              { ...action.payload },
-            ],
-          },
-        },
-      });
       return {
         ...state,
         rooms: {
@@ -51,10 +38,10 @@ const roomReducer = (state = initialState, action: any) => {
     case JOIN_ROOM.FULFILLED:
       return {
         ...state,
-        rooms: [
+        rooms: {
           ...state.rooms,
-          { ...action.payload.response },
-        ],
+          [action.payload.response.uuid]: { ...action.payload.response },
+        },
       };
     case GET_ROOMS.FULFILLED:
       return {

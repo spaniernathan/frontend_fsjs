@@ -77,7 +77,7 @@ const AddChannelPopup = ({
             &times;
           </Close>
         </PopupContent>
-        <PopupMessage placeholder="Channel name" onKeyDown={(e) => enter(e)} />
+        <PopupMessage placeholder="Channel name" onKeyDown={(e) => enter(e)} value={value} onChange={(e: any) => setValue(e.target.value)} />
         <ButtonAddChannel type="button" className="ButtonAddChannel" onClick={onClickAddChannel}>Add Member</ButtonAddChannel>
       </ShowPopup>
     </div>

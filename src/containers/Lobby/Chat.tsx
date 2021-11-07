@@ -61,7 +61,6 @@ const Chat = ({
           && roomState.rooms
           && roomState.rooms[room.uuid].messages
           && roomState.rooms[room.uuid].messages
-            .reverse()
             .map((m: any) => (
               <Message key={m.uuid} message={m} />
             ))
