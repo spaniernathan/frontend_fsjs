@@ -68,7 +68,7 @@ const AddChannelPopup = (props: any): JSX.Element => {
       <ShowPopup className="is-align-items-center is-flex-direction-column is-flex is-justify-content-center">
         <PopupContent className="is-flex is-justify-content-space-between">
           <PopupTitle className="is-flex is-justify-content-space">
-            Create channel
+            Join team
             {props.title}
           </PopupTitle>
           <Close role="" onClick={closeHandler} onKeyDown={(e) => enter(e)}>
