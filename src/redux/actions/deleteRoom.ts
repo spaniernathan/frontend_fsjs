@@ -11,7 +11,7 @@ const deleteRoomFulfilled = (payload: any) => ({ type: DELETE_ROOM.FULFILLED, pa
 const deleteRoomCancelled = (payload: any) => ({ type: DELETE_ROOM.CANCELLED, payload });
 const deleteRoomRejected = (payload: any) => ({ type: DELETE_ROOM.REJECTED, payload });
 const deleteRoomRequest = (payload: DeleteRoomRequestType) => api.resources.rooms.deleteRoom({
-  params: payload,
+  params: { ...payload },
 });
 
 export {

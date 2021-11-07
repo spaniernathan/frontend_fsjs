@@ -11,7 +11,7 @@ const createRoomFulfilled = (payload: any) => ({ type: CREATE_ROOM.FULFILLED, pa
 const createRoomCancelled = (payload: any) => ({ type: CREATE_ROOM.CANCELLED, payload });
 const createRoomRejected = (payload: any) => ({ type: CREATE_ROOM.REJECTED, payload });
 const createRoomRequest = (payload: CreateRoomRequestType) => api.resources.rooms.createRoom({
-  body: payload,
+  body: { ...payload },
 });
 
 export {

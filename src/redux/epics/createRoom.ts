@@ -15,7 +15,7 @@ const createRoomEpic: Epic<any> = (action$) => action$.pipe(
   ofType(CREATE_ROOM.REQUEST),
   mergeMap((action: any) => race(
     createRoomRequest(action.payload).pipe(
-      flatMap((response: any) => of(createRoomFulfilled({ response }))),
+      flatMap((response: any) => of(createRoomFulfilled({ response: response.response }))),
       catchError((error) => of(createRoomRejected(error))),
     ),
     action$.pipe(

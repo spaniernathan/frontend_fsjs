@@ -15,7 +15,7 @@ const deleteRoomEpic: Epic<any> = (action$) => action$.pipe(
   ofType(DELETE_ROOM.REQUEST),
   mergeMap((action: any) => race(
     deleteRoomRequest(action.payload).pipe(
-      flatMap((response: any) => of(deleteRoomFulfilled({ response }))),
+      flatMap((response: any) => of(deleteRoomFulfilled({ response: response.response }))),
       catchError((error) => of(deleteRoomRejected(error))),
     ),
     action$.pipe(

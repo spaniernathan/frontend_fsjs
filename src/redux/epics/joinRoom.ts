@@ -15,7 +15,7 @@ const joinRoomEpic: Epic<any> = (action$) => action$.pipe(
   ofType(JOIN_ROOM.REQUEST),
   mergeMap((action: any) => race(
     joinRoomRequest(action.payload).pipe(
-      flatMap((response: any) => of(joinRoomFulfilled({ response }))),
+      flatMap((response: any) => of(joinRoomFulfilled({ response: response.response }))),
       catchError((error) => of(joinRoomRejected(error))),
     ),
     action$.pipe(

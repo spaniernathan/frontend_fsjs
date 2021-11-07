@@ -6,6 +6,7 @@ import createRoomEpic from './createRoom';
 import joinRoomEpic from './joinRoom';
 import deleteRoomEpic from './deleteRoom';
 import getUserEpic from './getUser';
+import getRoomsEpic from './getRooms';
 
 export default combineEpics(
   loginEpic,
@@ -14,4 +15,5 @@ export default combineEpics(
   joinRoomEpic,
   deleteRoomEpic,
   getUserEpic,
+  getRoomsEpic,
 );

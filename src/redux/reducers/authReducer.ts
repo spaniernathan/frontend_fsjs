@@ -6,8 +6,8 @@ type InitialStateType = {
 };
 
 const initialState: InitialStateType = {
-  accessToken: null,
-  refreshToken: null,
+  accessToken: localStorage.getItem('accessToken'),
+  refreshToken: localStorage.getItem('refreshToken'),
 };
 
 const authReducer = (state = initialState, action: any) => {

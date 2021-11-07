@@ -11,7 +11,7 @@ const joinRoomFulfilled = (payload: any) => ({ type: JOIN_ROOM.FULFILLED, payloa
 const joinRoomCancelled = (payload: any) => ({ type: JOIN_ROOM.CANCELLED, payload });
 const joinRoomRejected = (payload: any) => ({ type: JOIN_ROOM.REJECTED, payload });
 const joinRoomRequest = (payload: JoinRoomRequestType) => api.resources.rooms.joinRoom({
-  params: payload,
+  params: { ...payload },
 });
 
 export {

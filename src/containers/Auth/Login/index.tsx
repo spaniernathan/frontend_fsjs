@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { login } from 'redux/actions';
+import { useTranslation } from 'react-i18next';
 import {
   Button,
   Input,
@@ -14,6 +15,7 @@ import {
 
 const Login = ({ loginAction, auth }: any) => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
@@ -28,7 +30,7 @@ const Login = ({ loginAction, auth }: any) => {
       </div>
       <Div className="container box background-color #e8e8e8">
         <div className="field has-text-centered">
-          <Title> LOGIN</Title>
+          <Title>{t('loginPage.title')}</Title>
         </div>
         <div className="field">
           <p className="control has-icons-left">

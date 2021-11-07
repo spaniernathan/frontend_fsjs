@@ -1,13 +1,15 @@
-import { GET_USER } from '../actions';
+import { GET_USER, CHANGE_LANGUAGE } from '../actions';
 
 type InitialStateType = {
   id: string
   displayName: string
+  language: string
 };
 
 const initialState: InitialStateType = {
   id: '',
   displayName: '',
+  language: 'fr',
 };
 
 const userReducer = (state = initialState, action: any) => {
@@ -16,6 +18,11 @@ const userReducer = (state = initialState, action: any) => {
       return {
         ...state,
         ...action.payload,
+      };
+    case CHANGE_LANGUAGE.FULFILLED:
+      return {
+        ...state,
+        language: action.payload,
       };
     default:
       return state;

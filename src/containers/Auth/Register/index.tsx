@@ -10,7 +10,7 @@ import {
   Div,
 } from '../../../components';
 
-const Register = ({ RegisterAction, auth }: any) => {
+const Register = ({ registerAction, auth }: any) => {
   const navigate = useNavigate();
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
@@ -68,7 +68,8 @@ const Register = ({ RegisterAction, auth }: any) => {
               className="button is-centered"
               type="button"
               onClick={() => {
-                RegisterAction({ email, password });
+                registerAction({ email, password, displayName });
+                navigate('/login');
               }}
             >
               Register
@@ -82,7 +83,7 @@ const Register = ({ RegisterAction, auth }: any) => {
 };
 
 const mapDispatchToProps = (dispatch: any) => ({
-  RegisterAction: (payload: any) => dispatch(register(payload)),
+  registerAction: (payload: any) => dispatch(register(payload)),
 });
 
 const mapStateToProps = (store: any) => {

@@ -13,7 +13,7 @@ const registerFulfilled = (payload: any) => ({ type: REGISTER.FULFILLED, payload
 const registerCancelled = (payload: any) => ({ type: REGISTER.CANCELLED, payload });
 const registerRejected = (payload: any) => ({ type: REGISTER.REJECTED, payload });
 const registerRequest = (payload: RegisterRequestType) => api.resources.users.register({
-  body: payload,
+  body: { ...payload },
 });
 
 export {
