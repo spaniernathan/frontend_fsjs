@@ -14,7 +14,7 @@ interface AppProps {
 const App = ({
   user, auth, room, children,
 }: PropsWithChildren<AppProps>) => (
-  <div className="container">
+  <div>
     { children }
   </div>
 );

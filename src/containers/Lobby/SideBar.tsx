@@ -4,9 +4,17 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Logout from '@mui/icons-material/Logout';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import SideBarChannel from './SidebarChannel';
-import '../style/SideBar.css';
+// import '../style/SideBar.css';
 // import i18n from './i18n';
 import AddChannelPopup from './AddPopup';
+import SideBarContent from '../../components/Lobby/SideBarContent';
+import Profile from '../../components/Lobby/SideBarProfileInformation/Profile';
+import ProfileInformation from '../../components/Lobby/SideBarProfileInformation/ProfileInformation';
+import ScrollView from '../../components/Lobby/ScrollView';
+import SideBarChannels from '../../components/Lobby/SideBarChannels/SideBarChannels';
+import SideBarChannelsHeader from '../../components/Lobby/SideBarChannels/SideBarChannelsHeader';
+import SideBarChannelsTitle from '../../components/Lobby/SideBarChannels/SideBarChannelsTitle';
+import SideBarChannelsAppName from '../../components/Lobby/SideBarChannels/SideBarChannelsAppName';
 
 const SideBar = () => {
   const [showResults, setShowResults] = React.useState(true);
@@ -19,29 +27,26 @@ const SideBar = () => {
 
   const onClicks = () => setShowResults(!showResults);
   return (
-    <div className="sidebarContent">
-      <div className="profile">
-        <div className="profileInformation">
-          <AccountCircleIcon className="avatar" />
-          <div className="profile_information">
-            <h3>zaezf</h3>
-            <p>zaezf</p>
-          </div>
-        </div>
-        <Logout className="logout" />
-      </div>
-      <div className="scrollView">
-        <div className="sidebar_channels_title">
-          <div className="sidebar_content_header">
-            <div role="button" tabIndex={0} className="sidebar_channels_header" onClick={onClicks} onKeyDown={onClicks}>
+    <SideBarContent className="is-flex is-flex-direction-column is-clipped">
+      <Profile className="is-flex is-justify-content-space-between is-align-items-center">
+        <ProfileInformation className="is-flex is-justify-content-flex-start is-align-items-center">
+          <AccountCircleIcon className="mr-2" />
+          <h3>zaezf</h3>
+        </ProfileInformation>
+        <Logout />
+      </Profile>
+      <ScrollView>
+        <SideBarChannels>
+          <SideBarChannelsHeader className="is-flex is-justify-content-space-between is-align-items-center">
+            <SideBarChannelsTitle role="button" tabIndex={0} className="is-flex is-align-items-center is-justify-content-center" onClick={onClicks} onKeyDown={onClicks}>
               <ExpandMoreIcon />
               {/* <h4 className="textChannels">{i18n.t('textChannels')}</h4> */}
               <h4 className="textChannels">Channels</h4>
-            </div>
+            </SideBarChannelsTitle>
             <div onClick={renderPopup} role="button" tabIndex={0} onKeyDown={onClicks}>
               <Add className="addIcon" />
             </div>
-          </div>
+          </SideBarChannelsHeader>
           {showResults
             ? (
               <div className="channels_list">
@@ -103,20 +108,14 @@ const SideBar = () => {
               </div>
             )
             : null}
-          <div className="sidebar_content_header">
-            <div role="button" tabIndex={0} className="sidebar_channels_header">
-              <ExpandMoreIcon />
-              {/* <h5 className="textChannels">{i18n.t('UsersChannel')}</h5> */}
-            </div>
-          </div>
+          {/* <div className="sidebar_content_header"> */}
           <AddChannelPopup title="title1" show={showPopup} onClose={renderPopup} addChannel />
-
-        </div>
-      </div>
-      <div className="sidebar_bottom">
+        </SideBarChannels>
+      </ScrollView>
+      <SideBarChannelsAppName className="is-flex-direction-row is-align-items-center is-justify-content-center is-inline-flex">
         <h2>M&apos;enFou</h2>
-      </div>
-    </div>
+      </SideBarChannelsAppName>
+    </SideBarContent>
   );
 };
 

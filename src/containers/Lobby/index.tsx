@@ -1,16 +1,17 @@
 import React from 'react';
 import Chat from './Chat';
 import SideBar from './SideBar';
-import '../style/Home.css';
+import HomeSideBar from '../../components/Lobby/HomeSideBar';
+import HomeSideChat from '../../components/Lobby/HomeSideChat';
 
 const Lobby = () => (
-  <div className="App">
-    <div className="sidebar">
+  <div className="is-flex">
+    <HomeSideBar>
       <SideBar />
-    </div>
-    <div className="chat1">
+    </HomeSideBar>
+    <HomeSideChat>
       <Chat />
-    </div>
+    </HomeSideChat>
   </div>
 );
 

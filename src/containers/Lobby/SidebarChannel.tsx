@@ -1,10 +1,10 @@
 import React from 'react';
 import Chat from '@mui/icons-material/Chat';
-import '../style/SideBarChannel.css';
 import PropTypes from 'prop-types';
+import Channel from '../../components/Lobby/SideBarChannels/Channel/Channel';
 
 const SideBarChannel = ({ id, name }:any) => (
-  <div className="channel">
+  <Channel className="is-flex is-align-items-center">
     <span><Chat className="icon" /></span>
     <div id={id}>
       <p>
@@ -15,7 +15,7 @@ const SideBarChannel = ({ id, name }:any) => (
       </p>
 
     </div>
-  </div>
+  </Channel>
 );
 
 SideBarChannel.defaultProps = {
