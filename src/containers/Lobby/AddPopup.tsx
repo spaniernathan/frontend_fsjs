@@ -1,8 +1,7 @@
 /* eslint-disable jsx-a11y/aria-role */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable react/destructuring-assignment */
-import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState } from 'react';
 import '../style/AddChannelPopup.css';
 import ShowPopup from '../../components/Lobby/Popup/ShowPopup';
 import PopupContent from '../../components/Lobby/Popup/PopupContent';
@@ -11,26 +10,31 @@ import Close from '../../components/Lobby/Popup/Close';
 import PopupMessage from '../../components/Lobby/Popup/PopupMessage';
 import ButtonAddChannel from '../../components/Lobby/Popup/ButtonAddChannel';
 
-const AddChannelPopup = (props: any): JSX.Element => {
-  console.log('addin channel', props.addChannel);
-  const [show, setShow] = useState(false);
+const AddChannelPopup = ({
+  action, addChannel, title, show, setShow,
+}: any) => {
+  const [value, setValue] = useState('');
+
   const enter = (event: any) => {
     if (event.key === 'Enter') {
-      console.log(event.target.value);
+      action(value);
     }
   };
 
-  const closeHandler = (e: any) => {
+  const closeHandler = () => {
     setShow(false);
-    console.log(e);
-    props.onClose(false);
   };
 
-  useEffect(() => {
-    setShow(props.show);
-  }, [props.show]);
+  const onClickAddChannel = () => {
+    if (addChannel) {
+      action({ roomName: value });
+    } else {
+      action({ roomId: value });
+    }
+    setShow(false);
+  };
 
-  if (props.addChannel === true) {
+  if (addChannel === true) {
     return (
       <div
         style={{
@@ -43,16 +47,14 @@ const AddChannelPopup = (props: any): JSX.Element => {
           <PopupContent className="is-flex is-justify-content-space-between">
             <PopupTitle className="is-flex is-justify-content-space">
               Create channel
-              {props.title}
+              {title}
             </PopupTitle>
-            <Close role="" onClick={closeHandler} onKeyDown={(e) => enter(e)}>
+            <Close role="" onClick={closeHandler} onKeyDown={closeHandler}>
               &times;
             </Close>
           </PopupContent>
-          {/* <form className="f"> */}
-          <PopupMessage placeholder="Channel name" onKeyDown={(e) => enter(e)} />
-          {/* </form> */}
-          <ButtonAddChannel type="button" className="ButtonAddChannel">Add Channel</ButtonAddChannel>
+          <PopupMessage placeholder="Channel name" onKeyDown={(e) => enter(e)} value={value} onChange={(e: any) => setValue(e.target.value)} />
+          <ButtonAddChannel type="button" className="ButtonAddChannel" onClick={onClickAddChannel}>Add Channel</ButtonAddChannel>
         </ShowPopup>
       </div>
     );
@@ -69,26 +71,17 @@ const AddChannelPopup = (props: any): JSX.Element => {
         <PopupContent className="is-flex is-justify-content-space-between">
           <PopupTitle className="is-flex is-justify-content-space">
             Join team
-            {props.title}
+            {title}
           </PopupTitle>
-          <Close role="" onClick={closeHandler} onKeyDown={(e) => enter(e)}>
+          <Close role="" onClick={closeHandler} onKeyDown={() => closeHandler()}>
             &times;
           </Close>
         </PopupContent>
-        {/* <form className="f"> */}
         <PopupMessage placeholder="Channel name" onKeyDown={(e) => enter(e)} />
-        {/* </form> */}
-        <ButtonAddChannel type="button" className="ButtonAddChannel">Add Member</ButtonAddChannel>
+        <ButtonAddChannel type="button" className="ButtonAddChannel" onClick={onClickAddChannel}>Add Member</ButtonAddChannel>
       </ShowPopup>
     </div>
   );
-};
-
-AddChannelPopup.propTypes = {
-  title: PropTypes.string.isRequired,
-  show: PropTypes.bool.isRequired,
-  addChannel: PropTypes.bool.isRequired,
-  onClose: PropTypes.func.isRequired,
 };
 
 export default AddChannelPopup;

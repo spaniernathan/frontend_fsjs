@@ -1,27 +1,52 @@
-import { RoomType } from '../../types';
 import {
-  CREATE_ROOM, JOIN_ROOM, DELETE_ROOM, GET_ROOMS,
+  CREATE_ROOM, JOIN_ROOM, GET_ROOMS, MSG_RECEIVED,
 } from '../actions';
 
 type InitialStateType = {
-  rooms: Array<RoomType>
-  messages: any
+  rooms: any
 };
 
 const initialState: InitialStateType = {
-  rooms: [],
-  messages: {},
+  rooms: {},
 };
 
 const roomReducer = (state = initialState, action: any) => {
+  console.log(action);
   switch (action.type) {
     case CREATE_ROOM.FULFILLED:
       return {
         ...state,
-        rooms: [
+        rooms: {
           ...state.rooms,
-          { ...action.payload.response },
-        ],
+          [action.payload.response.uuid]: { ...action.payload.response },
+        },
+      };
+    case MSG_RECEIVED.FULFILLED:
+      console.log({
+        ...state,
+        rooms: {
+          ...state.rooms,
+          [action.payload.roomUuid]: {
+            ...state.rooms[action.payload.roomUuid],
+            messages: [
+              ...state.rooms[action.payload.roomUuid].messages,
+              { ...action.payload },
+            ],
+          },
+        },
+      });
+      return {
+        ...state,
+        rooms: {
+          ...state.rooms,
+          [action.payload.roomUuid]: {
+            ...state.rooms[action.payload.roomUuid],
+            messages: [
+              ...state.rooms[action.payload.roomUuid].messages,
+              { ...action.payload },
+            ],
+          },
+        },
       };
     case JOIN_ROOM.FULFILLED:
       return {
@@ -34,17 +59,9 @@ const roomReducer = (state = initialState, action: any) => {
     case GET_ROOMS.FULFILLED:
       return {
         ...state,
-        rooms: [
-          ...state.rooms,
-          ...action.payload.response,
-        ],
-      };
-    case DELETE_ROOM.FULFILLED:
-      return {
-        ...state,
-        rooms: [
-          ...state.rooms.filter((room) => room.id === action.payload.id),
-        ],
+        rooms: action.payload.response.reduce(
+          (acc: any, curr: any) => ({ ...acc, [curr.uuid]: curr }), {},
+        ),
       };
     default:
       return state;

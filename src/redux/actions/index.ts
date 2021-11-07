@@ -10,7 +10,6 @@ export {
 export {
   LOGOUT,
   logout,
-  logoutFulfilled,
 } from './logout';
 
 export {
@@ -70,5 +69,9 @@ export {
 export {
   CHANGE_LANGUAGE,
   changeLanguage,
-  changeLanguageFulfilled,
 } from './language';
+
+export {
+  MSG_RECEIVED,
+  messageReceived,
+} from './messageReceived';

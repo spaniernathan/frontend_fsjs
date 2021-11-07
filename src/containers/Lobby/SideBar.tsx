@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Add from '@mui/icons-material/Add';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Logout from '@mui/icons-material/Logout';
@@ -6,8 +6,6 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { createRoom } from 'redux/actions';
 import { connect } from 'react-redux';
 import SideBarChannel from './SidebarChannel';
-// import '../style/SideBar.css';
-// import i18n from './i18n';
 import AddChannelPopup from './AddPopup';
 import SideBarContent from '../../components/Lobby/SideBar/SideBarContent';
 import Profile from '../../components/Lobby/SideBar/SideBarProfileInformation/Profile';
@@ -38,8 +36,6 @@ const SideBar = ({
 
   const onClicks = () => setShowResults(!showResults);
 
-  // if room === selectedRoom => show room is selected
-
   return (
     <SideBarContent className="is-flex is-flex-direction-column is-clipped">
       <Profile className="is-flex is-justify-content-space-between is-align-items-center">
@@ -64,20 +60,24 @@ const SideBar = ({
           {showResults
             ? (
               <div className="channels_list">
-                { room.rooms && room.rooms.map((r: any) => (
+                { room.rooms && Object.keys(room.rooms).map((key: any) => (
                   <SideBarChannel
-                    key={r.uuid}
-                    keyValue={r.uuid}
-                    name={r.roomName}
-                    id={r.uuid}
-                    onClick={() => { setRoom(r); }}
+                    key={room.rooms[key].uuid}
+                    keyValue={room.rooms[key].uuid}
+                    name={room.rooms[key].roomName}
+                    id={room.rooms[key].uuid}
+                    onClick={() => { setRoom(room.rooms[key]); }}
                   />
                 )) }
               </div>
             )
             : null}
-          {/* <div className="sidebar_content_header"> */}
-          <AddChannelPopup title="title1" show={showPopup} onClose={renderPopup} addChannel />
+          <AddChannelPopup
+            show={showPopup}
+            setShow={setShowPopup}
+            action={createRoomAction}
+            addChannel
+          />
         </SideBarChannels>
       </ScrollView>
       <SideBarChannelsAppName className="is-flex-direction-row is-align-items-center is-justify-content-center is-inline-flex">

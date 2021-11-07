@@ -8,15 +8,24 @@ import { getRooms } from '../../redux/actions';
 
 type LobbyProps = {
   getRoomsAction: any
+  ws: any
+  room: any
 }
 
 const Lobby = ({
-  getRoomsAction,
+  getRoomsAction, ws, room,
 }: LobbyProps) => {
   const [selectedRoom, setRoom] = useState(null);
   useEffect(() => {
     getRoomsAction();
   }, []);
+  useEffect(() => {
+    if (room.rooms && ws) {
+      Object.keys(room.rooms).forEach((key: any) => {
+        ws.emit('join_room', { roomUuid: room.rooms[key].uuid });
+      });
+    }
+  }, [room]);
   return (
     <div className="is-flex">
       <HomeSideBar>
@@ -29,8 +38,16 @@ const Lobby = ({
   );
 };
 
+const mapStateToProps = (store: any) => {
+  const { ws, room } = store;
+  return ({
+    ws: ws.ws,
+    room,
+  });
+};
+
 const mapDispatchToProps = (dispatch: any) => ({
   getRoomsAction: () => dispatch(getRooms()),
 });
 
-export default connect(null, mapDispatchToProps)(Lobby);
+export default connect(mapStateToProps, mapDispatchToProps)(Lobby);
