@@ -3,6 +3,7 @@ import Input from './Input';
 import Title from './Title';
 import Links from './link';
 import Div from './Div';
+import Paragraph from './Paragraph';
 
 export {
   Button,
@@ -10,4 +11,5 @@ export {
   Title,
   Links,
   Div,
+  Paragraph,
 };
