@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import {
   Home, Login, Register, Lobby, NotFound, App,
-} from 'containers';
+} from './containers';
 
 const ProtectedRoutes = () => (
   <Routes>
@@ -16,7 +16,7 @@ const MyRoutes = () => (
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
-      <Route path="/looby" element={<ProtectedRoutes />} />
+      <Route path="/lobby" element={<ProtectedRoutes />} />
       <Route element={<NotFound />} />
     </Routes>
   </App>
